@@ -1,0 +1,2 @@
+gcc -I /opt/intel/opencl-1.2-4.4.0.117/include/ -L
+/opt/intel/opencl-1.2-4.4.0.117/lib64/ -o hello hello.c -lOpenCL
