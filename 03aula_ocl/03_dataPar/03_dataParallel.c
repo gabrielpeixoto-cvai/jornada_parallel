@@ -56,17 +56,17 @@
     		}	
     	}	
      
-    	/* Get Platform/Device Information
+    	/* Get Platform/Device Informationi*/
     	ret = clGetPlatformIDs(1, &platform_id, &ret_num_platforms);	
     	ret = clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_num_devices);
      
     	/* Create OpenCL Context */
     	context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &ret);
      
-    	* Create command queue */
-    	command_queue = clCreateCommandQeue(context, device_id, 0, &ret);
+    	/* Create command queue */
+    	command_queue = clCreateCommandQueue(context, device_id, 0, &ret);
      
-    	* Create Buffer Object */
+    	/* Create Buffer Object */
     	Amobj = clCreateBuffer(context, CL_MEM_READ_WRITE, 4*4*sizeof(float), NULL, &ret);
     	Bmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, 4*4*sizeof(float), NULL, &ret);
     	Cmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, 4*4*sizeof(float), NULL, &ret);
