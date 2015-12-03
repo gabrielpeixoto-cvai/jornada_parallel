@@ -30,5 +30,5 @@ void main(){
     }
 
     /* ultima coisa que a main deve fazer */
-    pthread_exit(NULL);
+    //pthread_exit(NULL);
 }

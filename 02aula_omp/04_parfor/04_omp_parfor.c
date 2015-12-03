@@ -12,10 +12,12 @@ main ()  {
           a[i] = b[i] = i * 1.0;
     chunk = CHUNKSIZE;
 
+//iterations will be distribuited on equal sized chuncks to each thread
+//
 #pragma omp parallel for \
        shared(a,b,c,chunk) private(i) \
        schedule(static,chunk)
-      for (i=0; i < n; i++)
+      for (i=0; i < N; i++)
               c[i] = a[i] + b[i];
 }
 
