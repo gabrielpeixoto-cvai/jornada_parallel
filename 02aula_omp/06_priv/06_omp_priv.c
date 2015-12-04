@@ -8,7 +8,7 @@ float x;
 void main(){
      
 /* Explicitly turn off dynamic threads, 
- * the system wont control the number of threads*/
+ * the number of threads per parallel region ins no dynamically set*/
 
 omp_set_dynamic(0);
        
