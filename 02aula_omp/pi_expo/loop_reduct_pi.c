@@ -1,11 +1,17 @@
 #include <stdio.h>
 #include <omp.h>
+#include <time.h>
 
 static long num_steps = 100000; double step;
 
 void main(){ 
     int i; double x, pi, sum = 0.0;
     step = 1.0/(double) num_steps;
+
+    double ex_time;
+    clock_t begin, end;
+
+    begin=clock();
     
     #pragma omp parallel
     {
@@ -19,5 +25,8 @@ void main(){
     }
     pi = step * sum;
 
-    printf("pi = %G\n", pi);
+    end=clock();
+    ex_time=(double)(end - begin)/CLOCKS_PER_SEC;
+    printf("time spent : %f seconds\n or %f milliseconds\n", ex_time, (ex_time*1000));
+    printf("pi = %G\n",pi);
 }

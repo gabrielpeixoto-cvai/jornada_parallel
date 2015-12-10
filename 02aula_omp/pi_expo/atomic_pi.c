@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <omp.h>
+#include <time.h>
 
 static long num_steps = 100000; double step;
-#define NUM_THREADS 2
+#define NUM_THREADS 4
 
 void main (){
     int nthreads;
     double pi; step = 1.0/(double) num_steps;
     omp_set_num_threads(NUM_THREADS);
+    double ex_time;
+    clock_t begin, end;
 
     #pragma omp parallel
     {
@@ -33,5 +36,8 @@ void main (){
         pi += sum ;
      }
 
-    printf("pi = %G\n", pi);
+    end=clock();
+    ex_time=(double)(end - begin)/CLOCKS_PER_SEC;
+    printf("time spent : %f seconds\n or %f milliseconds\n", ex_time, (ex_time*1000));
+    printf("pi = %G\n",pi);
 }

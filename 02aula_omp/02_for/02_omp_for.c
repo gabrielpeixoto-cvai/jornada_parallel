@@ -1,8 +1,8 @@
 #include <omp.h>
-#define CHUNKSIZE 100
-#define N     1000
+#define CHUNKSIZE 10
+#define N     100
 
-main ()  
+void main ()  
 {
 
     int i, chunk;
@@ -17,9 +17,10 @@ main ()
       {
 
             #pragma omp for schedule(dynamic,chunk) nowait
-            for (i=0; i < N; i++)
+            for (i=0; i < N; i++){
                     c[i] = a[i] + b[i];
+                    printf("%f\n",c[i]);
+                  }
 
-              }  /* end of parallel section */
-
-}
+              }  /* end of parallel section */  
+}     

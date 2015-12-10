@@ -4,6 +4,8 @@
 void main(){
 
     int nthreads, tid;
+    omp_set_num_threads(10);
+    omp_set_dynamic(0);
 
     /* Fork a team of threads with each thread having a private tid variable */
     #pragma omp parallel private(tid)
