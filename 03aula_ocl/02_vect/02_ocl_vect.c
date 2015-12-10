@@ -34,8 +34,8 @@
     	/* Load kernel source code */
     	fp = fopen(fileName, "r");
     	if (!fp) {
-    	
-    	
+    	   fprintf(stderr, "Failed to load kernel.\n");
+            exit(1);
     	}
     	source_str = (char *)malloc(MAX_SOURCE_SIZE);
     	source_size = fread(source_str, 1, MAX_SOURCE_SIZE, fp);
@@ -43,7 +43,7 @@
     	
     	/*Initialize Data */
     	for (i = 0; i < MEM_SIZE; i++) {
-    	
+    	   mem[i]=i;
     	}
     	
     	/* Get platform/device information */
@@ -83,10 +83,12 @@
     	/* Transfer result from the memory buffer */
     	ret = clEnqueueReadBuffer(command_queue, memobj, CL_TRUE, 0, MEM_SIZE * sizeof(float), mem, 0, NULL, NULL);
     	
+        printf("\n--vector--\n");
     	/* Display result */
     	for (i=0; i < MEM_SIZE; i++) {
-    	
+    	   printf("%f", mem[i]);
     	}
+        printf("\n");
     	
     	/* Finalization */
     	ret = clFlush(command_queue);

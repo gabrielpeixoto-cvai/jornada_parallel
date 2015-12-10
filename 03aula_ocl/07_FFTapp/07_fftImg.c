@@ -148,9 +148,11 @@ size_t lws[2];
 /* Load kernel source code */	
 fp = fopen(fileName, "r");	
 if (!fp) {	
-fprintf(stderr, "Failed to load kernel.\n");	
-exit(1);	
-}	
+    fprintf(stderr, "Failed to load kernel.\n");	
+    exit(1);	
+}
+printf("kernel read");
+
 source_str = (char *)malloc(MAX_SOURCE_SIZE);	
 source_size = fread(source_str, 1, MAX_SOURCE_SIZE, fp);	
 fclose( fp );	
