@@ -1,0 +1,4 @@
+  gcc -I /opt/intel/opencl-sdk/include/ -L /opt/intel/opencl-sdk/lib64/ -o hello.out hello.c -lOpenCL
+  gcc -I /opt/intel/opencl-sdk/include/ -L /opt/intel/opencl-sdk/lib64/ -o vect.out vecAdd.c -lOpenCL -lm
+
+
